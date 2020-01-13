@@ -8,15 +8,13 @@ import bs4, requests
 import lxml
 
 '''
-extractedValueDict = []
-urlIMDB={"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc",
-	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=51&ref_=adv_nxt",
-	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=101&ref_=adv_nxt",
-	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=151&ref_=adv_nxt",
-	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=201&ref_=adv_nxt"}
+import bs4, requests
+import lxml
 
-for url in urlIMDB:
-    print(url)
+
+extractedValueDict = []
+
+bookNestedDict = {}
 
 url="https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc"   
 print("scraping web for 100 movies by IMDB start")
@@ -30,7 +28,7 @@ res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, 'lxml')
     # slno=soup.find_all("a",attrs={"class":"fi cn hx hy hz ia"})
     # bookAndAuthors = soup.find_all("strong", attrs={"class": "id ke"})
-ExtractedHTML = soup.find_all(h3, attrs={"class": "lister-item-header"})
+ExtractedHTML = soup.find_all("h3", attrs={"class": "lister-item-header"})
 print(type(ExtractedHTML))
 print("extracting data into dict start")
 
@@ -38,15 +36,16 @@ for i in range(0, len(ExtractedHTML)):
     if len(ExtractedHTML[i].getText()) > 2:
         extractedValueDict.append(ExtractedHTML[i].getText())
     print("text-->"+str(ExtractedHTML[i].getText()))
-            
-    
+
+print(extractedValueDict)
+extractedValueCount=1
 for i in extractedValueDict:
     i="%r"%i
 
-    bookNestedDict.update({i.split('\n')[0]: {'name': i.split('\n')[1], 'year': i.split('\n')[2]}})
+    bookNestedDict.update({str(i.split('\\n')[1].replace('.', '')): {'movie': i.split('\\n')[2], 'year': i.split('\\n')[3]}})
     
     print("extracted value count" + str(bookNestedDict))
-'''    
+    '''
 bookNestedDict={}
 jj='\n50.\nOnce Upon a Time in the West\n(1968)\n'
 i="%r"%jj

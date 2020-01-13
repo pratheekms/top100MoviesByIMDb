@@ -14,13 +14,20 @@ import googleSearchQuery
 
 def main():
     start = time.time()
-    url = "https://medium.com/world-literature/creating-the-ultimate-list-100-books-to-read-before-you-die-45f1b722b2e5"
+    urlIMDb={"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc",
+	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=51&ref_=adv_nxt",
+	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=101&ref_=adv_nxt",
+	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=151&ref_=adv_nxt",
+	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=201&ref_=adv_nxt"}
+    for url in urlIMDb:
+        extractedValueDict=webScrapping.scrapingFunction(url,"h3","lister-item-header")
+        bookNestedDict = listToNestedDict.listToDictFunction(extractedValueDict)
     # webScrapping.scrapingFunction(url, "strong", "id ke")
-    extractedValueDict = webScrapping.scrapingFunction(url, "strong", "id ke")
+    #extractedValueDict = webScrapping.scrapingFunction(url, "strong", "id ke")
     # dictToNestedDict.HtmlToDictFunction(webScrapping.scrapingFunction.extractedValueDict)
-    bookNestedDict = listToNestedDict.listToDictFunction(extractedValueDict)
+    #bookNestedDict = listToNestedDict.listToDictFunction(extractedValueDict)
     writeToExcelFromDict.writeToExcelFunction(bookNestedDict)
-    googleSearchQuery.googleSearchQueryFunction()
+    
     end = time.time()
     print("time taken by program is:" + str(end - start))
 

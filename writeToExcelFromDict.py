@@ -15,8 +15,8 @@ def writeToExcelFunction(bookNestedDict):
     wb_objex = openpyxl.Workbook()
     sheet_objex = wb_objex.active
     sheet_objex.cell(row=1, column=1).value = 'Sl. No'
-    sheet_objex.cell(row=1, column=2).value = 'Book Name'
-    sheet_objex.cell(row=1, column=3).value = 'Book Author'
+    sheet_objex.cell(row=1, column=2).value = 'Movie Name'
+    sheet_objex.cell(row=1, column=3).value = 'Year of release'
     sheet_objex.cell(row=1, column=4).value = 'Rating'
 
     print("------writng list slno book author to excel start------")
