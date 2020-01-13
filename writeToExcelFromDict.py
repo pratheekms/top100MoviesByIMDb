@@ -44,7 +44,7 @@ def writeToExcelFunction(bookNestedDict):
         # sheet_objex.cell(row=col1+1,column=4).value='Rating'
     print("------writing list slno book author to excel end------")
 
-    wb_objex.save("top100BooksByMedium.xlsx")
+    wb_objex.save("top100MovieByIMDb.xlsx")
 
 
 if __name__ == '__main__':
