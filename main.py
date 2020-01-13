@@ -9,7 +9,9 @@ import time
 import webScrapping
 import listToNestedDict
 import writeToExcelFromDict
-import googleSearchQuery
+#import googleSearchQuery
+
+bookNestedDict = {}
 
 
 def main():
@@ -21,7 +23,7 @@ def main():
 	"https://www.imdb.com/search/title/?groups=top_250&sort=user_rating,desc&start=201&ref_=adv_nxt"}
     for url in urlIMDb:
         extractedValueDict=webScrapping.scrapingFunction(url,"h3","lister-item-header")
-        bookNestedDict = listToNestedDict.listToDictFunction(extractedValueDict)
+        bookNestedDict.update(listToNestedDict.listToDictFunction(extractedValueDict))
     # webScrapping.scrapingFunction(url, "strong", "id ke")
     #extractedValueDict = webScrapping.scrapingFunction(url, "strong", "id ke")
     # dictToNestedDict.HtmlToDictFunction(webScrapping.scrapingFunction.extractedValueDict)

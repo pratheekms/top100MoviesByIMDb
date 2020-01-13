@@ -24,6 +24,7 @@ def listToDictFunction(extractedValueDict, extractedValueCount=1):
         bookNestedDict.update({str(i.split('\\n')[1].replace('.', '')): {'movie': i.split('\\n')[2], 'year': i.split('\\n')[3]}})
         
         print("extracted value count" + str(extractedValueCount))
+        extractedValueCount+=1
     return bookNestedDict
 
 if __name__ == '__main__':

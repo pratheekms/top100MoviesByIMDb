@@ -28,18 +28,19 @@ def writeToExcelFunction(bookNestedDict):
         for key in ba:
             print(key + ":", ba[key])
 
-            col2 = ba['name']  # bookname
-            col3 = ba['author']  # bookauthor
+            col2 = ba['movie']  # bookname
+            col3 = ba['year']  # bookauthor
             # call write to text file function
+            print("write to text for"+col1)
             writeToTxtFile.writeToTxtFileFunction(col1, col2, col3)
             '''
         f = open("top100BooksByMedium.txt", "a")
         f.write(str(col1) + '\t' + str(col2) + '\t' + col2 + '\n')
         f.close()
         '''
-        sheet_objex.cell(row=col1 + 1, column=1).value = str(col1)
-        sheet_objex.cell(row=col1 + 1, column=2).value = str(col2)
-        sheet_objex.cell(row=col1 + 1, column=3).value = str(col3)
+        sheet_objex.cell(row=int(col1)+1, column=1).value = str(col1)
+        sheet_objex.cell(row=int(col1) + 1, column=2).value = str(col2)
+        sheet_objex.cell(row=int(col1) + 1, column=3).value = str(col3)
         # sheet_objex.cell(row=col1+1,column=4).value='Rating'
     print("------writing list slno book author to excel end------")
 
