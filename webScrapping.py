@@ -9,7 +9,7 @@ import bs4, requests
 import lxml
 import listToNestedDict
 
-
+import time
 extractedValueDict = []
 
 
@@ -26,14 +26,15 @@ def scrapingFunction(url, tagName, className):
     # slno=soup.find_all("a",attrs={"class":"fi cn hx hy hz ia"})
     # bookAndAuthors = soup.find_all("strong", attrs={"class": "id ke"})
     ExtractedHTML = soup.find_all(tagName, attrs={"class": className})
-    print(type(ExtractedHTML))
-    print("extracting data into dict start")
+    print(ExtractedHTML)
+    time.sleep(2)
+    print("extracting data into extractedvaluedict")
 
-    for i in range(0, len(ExtractedHTML) - 4):
-        if len(ExtractedHTML[i].getText()) > 2:
+    for i in range(0, len(ExtractedHTML)):
+        if len(ExtractedHTML[i].getText()):
             extractedValueDict.append(ExtractedHTML[i].getText())
             print(ExtractedHTML[i].getText())
-            print(type(extractedValueDict))
+            #print(type(extractedValueDict))
     #HtmlToDict.HtmlToDictFunction(ExtractedHTML)
     return extractedValueDict
 

@@ -19,7 +19,7 @@ def writeToExcelFunction(bookNestedDict):
     sheet_objex.cell(row=1, column=3).value = 'Year of release'
     sheet_objex.cell(row=1, column=4).value = 'Rating'
 
-    print("------writng list slno book author to excel start------")
+    print("------writng list slno moive name year start------")
 
     for bn, ba in bookNestedDict.items():
         print("book num", bn)
